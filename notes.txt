@@ -1,0 +1,92 @@
+INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_img`, `thread_cat_id`, `thread_user_id`, `timestamp`, `thread_likes`, `thread_dislike`) VALUES ('1', 'this is thread title', 'this is thread description', '45645yht54ws5t', '1', '1', current_timestamp(), '', '');
+
+
+$sql = "INSERT INTO `images` (`description`, `imagename`) VALUES ('$name', '$newImageName')";
+
+
+
+$sql = "INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_img`, `thread_cat_id`, `thread_user_id`, `timestamp`, `thread_likes`, `thread_dislike`) VALUES ('$thread_title', '$thread_desc', '$newImageName', '$thread_cat_id', '1', current_timestamp(), '0', '0')";
+
+
+
+
+
+
+
+$isInserted = false;
+
+
+if(isset($_POST["submit"])){
+    require 'partials/_dbconnect.php';
+    $name = $_POST["image-name"];
+    if(isset($_FILES["image"]) && $_FILES["image"]["error"] === 0){
+        $fileName = $_FILES["image"]["name"];
+        $fileSize = $_FILES["image"]["size"];
+        $tmpName = $_FILES["image"]["tmp_name"];
+
+        $validImageExtensions = ['jpg', 'jpeg', 'png'];
+        $imageExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if(!in_array($imageExtension, $validImageExtensions)){
+            echo "<script>alert('Invalid Image Extension');</script>";
+        }
+        else if($fileSize > 10000000){
+            echo "<script>alert('Image size is too large');</script>";
+        }
+        else{
+            $newImageName = uniqid().'.'.$imageExtension;
+            move_uploaded_file($tmpName, 'img/'.$newImageName);
+
+
+            $thread_title = $_POST["post-title"];
+            $thread_desc = $_POST["post-description"];
+            $thread_cat = $_POST["selected-cat"];
+
+            $sql = "SELECT category_id FROM `categories` WHERE category_name=$thread_cat";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+                $thread_cat_id = $row['category_id'];
+                
+            }
+
+
+            $sql = "INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_img`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$thread_title', '$thread_desc', '$newImageName', '$thread_cat_id', '1', current_timestamp())";
+
+            $result = mysqli_query($conn, $sql);
+            if($result){
+                $isInserted = true;
+            }
+        }
+    }
+    else {
+        echo "<script>alert('Image not exist');</script>";
+    }
+}
+
+
+
+
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa vel nulla molestias earum harum, commodi iusto repellendus qui maxime doloremque dolore, voluptatum natus minus repudiandae sit in, amet voluptates quia vero neque modi reiciendis exercitationem architecto itaque? Unde illo error suscipit nisi fuga eum, a expedita impedit minus aliquam ratione.
+
+
+add comments and display comments
+like and dislike
+login / signup / logout
+about page
+recent page
+trending page
+thread page
+user profile page
+search functionality
+new logo
+
+
+c id
+c content
+thread_id
+comment by
+c time
+
+INSERT INTO `comments` (`comment_id`, `comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ('1', 'this is a comment', '1', '1', current_timestamp());
+
+vnrZ8BpwdyNHkIA

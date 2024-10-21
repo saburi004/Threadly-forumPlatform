@@ -1,0 +1,221 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Threadly - Home</title>
+</head>
+
+<body>
+
+    <?php require 'partials/_navbar.php'; ?>
+
+
+
+
+
+    <dialog data-modal class="dialog-container">
+        <h1 id="post-dialog-heading">Create New Post</h1>
+        <form class="new-post-form" action="handlepost.php" method="post" enctype="multipart/form-data">
+            <label for="selected-cat">Category:</label>
+            <select name="selected-cat" id="selected-cat" class="selected-cat" required>
+                <?php
+                require 'partials/_dbconnect.php';
+                $sql = "SELECT * FROM `categories`";
+                $result = mysqli_query($conn, $sql);
+
+                $totalRows = mysqli_num_rows($result);
+                if($totalRows > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
+                    }
+                }
+            ?>
+            </select>
+            <label for="post-title">Title:</label>
+            <input type="text" name="post-title" id="post-title" required>
+            <label for="post-description">Description:</label>
+            <textarea type="text" name="post-description" id="post-description" cols="30" rows="10" required></textarea>
+            <input type="file" name="pic" id="pic" class="post-image-upload" accept=".jpg, .jpeg, .png"
+                required>
+            <button type="submit" name="submit" id="submit">Post</button>
+            <button formmethod="dialog" id="cancel-post-btn" onclick="location.href='index.php'">Cancel</button>
+        </form>
+    </dialog>
+
+
+
+
+
+    <?php require 'partials/_addthread.php'?>
+
+    <section class="posts">
+      <?php  
+       require 'partials/_dbconnect.php';
+       $sql = "SELECT * FROM `threads`";
+       $result = mysqli_query($conn, $sql);
+       $totalRows = mysqli_num_rows($result);
+       if($totalRows > 0){
+           while($row = mysqli_fetch_assoc($result)){
+               echo '<div class="post-container">
+                    <div class="post-info-container">
+                        <div class="post-profile-picture">
+                            <img src="img/user.png" alt="" srcset="">
+                        </div>
+                        <div class="post-info">
+                            <h4 class="post-username">default-user-name</h4>
+                            <p>Posted by Default-user-name</p>
+                        </div>
+                    </div>
+                    <div class="post-title-container">
+                        <h3>'.$row['thread_title'].'</h3>';
+
+
+                        $desc_string = $row['thread_desc'];
+                        $string_length = strlen($desc_string);
+                        $right_trimmed_desc = substr($desc_string, 0, 169);
+                        $left_trimmed_desc = substr($desc_string, 169);
+                        
+
+                        if($string_length > 169){
+
+                            echo '<p>'.$right_trimmed_desc.'<span id="dots">...</span><span id="more">'.$left_trimmed_desc.'</span><button onclick="readMore()" id="read-more-btn">&#40;Read more&#41;</button></p>';
+                        }
+                        else{
+                            echo '<p>'.$desc_string.'</p>';
+                        }
+                        
+
+        
+                   echo  '</div>
+                    <div class="post-image-container">
+                        <img src="img/'.$row['thread_img'].'" alt="">
+                    </div>
+        
+                    <div class="post-reaction-container">
+                        <div class="like-dislike">
+                            <button><img src="img/like.png" alt=""></button>
+                            <button><img src="img/dislike.png" alt=""></button>
+                        </div>
+                        <button onclick="readComments();"><img src="img/comment.png" alt=""></button>
+                    </div>
+        
+                    <div class="comment-container" id="comment-container">
+                        <div class="add-comment-container">
+                            <img src="img/user.png" alt="">
+                            <form action="" class="add-comment-form">
+                                <input type="text" placeholder="Add a Comment" class="comment-input">
+                                <input type="submit" value="Add comment" class="add-comment-btn">
+                            </form>
+                        </div>
+                        <div class="view-comments-container">
+                            <div class="post-comment">
+                                <div class="comment-by-profile-picture">
+                                    <img src="img/user.png" alt="">
+                                </div>
+                                <div class="comment-by-info">
+                                    <h4 class="comment-by-username">Akask Varde</h4>
+                                    <p class="post-comment-content">Come and see JIPMER once in day time. You will understand
+                                        the reality. The airport is so small that, people playing cricket outside the airport
+                                        they can smash the ball into the airport campus.Come and see JIPMER once in day time.
+                                        You will understand the reality. The airport is so small that, people playing cricket
+                                        outside the airport they can smash the ball into the airport campus.</p>
+                                </div>
+                            </div>
+                            <div class="post-comment">
+                                <div class="comment-by-profile-picture">
+                                    <img src="img/user.png" alt="">
+                                </div>
+                                <div class="comment-by-info">
+                                    <h4 class="comment-by-username">Akask Varde</h4>
+                                    <p class="post-comment-content">Come and see JIPMER once in day time. You will understand
+                                        the reality. The airport is so small that, people playing footbal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+               
+           }
+       }
+      
+
+        ?>
+    </section>
+
+
+    <script>
+    const openButton = document.querySelectorAll("[data-open-modal]");
+    const closeButton = document.querySelector("[data-close-modal]");
+    const modal = document.querySelector("[data-modal]");
+
+    for (let i = 0; i < openButton.length; i++) {
+        openButton[i].addEventListener("click", function() {
+            modal.showModal();
+
+        });
+    }
+    </script>
+
+    <script>
+    function readMore() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("read-more-btn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
+
+
+
+    function readComments() {
+        var commentContainer = document.getElementById("comment-container");
+
+        if (commentContainer.style.display === "none") {
+            commentContainer.style.display = "inline";
+
+        } else {
+            commentContainer.style.display = "none";
+        }
+    }
+    </script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<?php
+require 'partials/_dbconnect.php';
+$id = $_GET['tid'];
+$sql = "SELECT * FROM `threads` WHERE thread_id=$id";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_assoc($result)){
+    $thread_title = $row['thread_title'];
+    $thread_desc = $row['thread_desc'];
+    $thread_img = $row['thread_img'];
+    $thread_time = $row['timestamp'];
+}
+?>

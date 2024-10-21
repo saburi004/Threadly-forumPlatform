@@ -1,0 +1,71 @@
+.read-more {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9rem;
+    transition: color 0.2s ease, transform 0.2s ease; /* Button transitions */
+}
+
+.read-more:hover {
+    color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.footer {
+    background-color: #0B60B0; /* Background color */
+    color: white; /* Text color */
+    padding: 40px 0; /* Padding */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to bottom */
+    width: 100%; /* Full width */
+}
+
+.footer h5 {
+    font-size: 20px; /* Header font size */
+    margin-bottom: 20px; /* Margin below header */
+}
+
+.footer p {
+    line-height: 1.5; /* Line height for text */
+}
+
+.footer ul {
+    list-style-type: none; /* No bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.footer ul li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+.footer ul li a {
+    color: white; /* Link color */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease; /* Transition effect */
+}
+
+.footer ul li a:hover {
+    color: #ffe600; /* Highlight color on hover */
+}
+
+.footer .social-media {
+    display: flex; /* Flexbox layout */
+    gap: 10px; /* Space between icons */
+}
+
+.footer .social-media li {
+    display: inline; /* Inline layout */
+}
+
+.footer .social-media i {
+    margin-right: 5px; /* Space between icon and text */
+}
+@media (max-width: 768px) {
+    
+    .footer .row {
+        flex-direction: column; /* Stack on small screens */
+        align-items: center; /* Center items */
+    }
+}

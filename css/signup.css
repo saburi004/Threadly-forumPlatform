@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+body{
+    background-color: #ededed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Hind", sans-serif;
+}
+.signup-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    
+    
+}
+.signup-container h1{
+    color: #0B60B0;
+    margin: 0;
+    
+}
+.signup-container p{
+    color: #0B60B0;
+    margin: 0;
+    margin-bottom: 15px;
+    
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.signup-lables{
+    font-size: 25px;
+}
+.signup-input{
+    width: 400px;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+.signup-btn{
+    color: #fff;
+    background-color: #0B60B0;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.signup-btn:hover{
+  
+    background-color: #084e8f
+}

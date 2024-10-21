@@ -1,0 +1,346 @@
+body {
+    background-color: rgb(243, 243, 243);
+}
+
+/* DIALOG BOX CSS */
+dialog {
+    border-radius: 20px;
+    border: none;
+    padding: 40px;
+}
+#post-dialog-heading {
+    color: #0B60B0;
+}
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+}
+.selected-cat {
+    width: 100%; /* Responsive */
+    max-width: 590px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    overflow: hidden;
+    padding: 10px;
+}
+.selected-cat option {
+    font-size: 15px;
+}
+.new-post-form label {
+    font-size: 20px;
+}
+.new-post-form input {
+    width: 100%; /* Responsive */
+    max-width: 550px;
+    height: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding-left: 15px;
+}
+.post-title {
+    width: 100%;
+    max-width: 587px;
+}
+.new-post-form textarea {
+    padding-left: 15px;
+    padding-top: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+.post-image-upload {
+    border: 1px solid gray;
+    padding: 20px;
+}
+.new-post-form button {
+    border-radius: 15px;
+    background: none;
+    background-color: #0B60B0;
+    border: none;
+    padding: 15px 20px;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.new-post-form button:hover {
+    background-color: #0a5295;
+}
+#cancel-post-btn {
+    background-color: #cecece;
+}
+#cancel-post-btn:hover {
+    background-color: #bbbbbb;
+}
+
+/* ASK QUESTION SECTION */
+.ask-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.ask-question-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    max-width: 640px; /* Responsive */
+}
+.ask-question-h2 {
+    text-align: center;
+    margin-right: 30px;
+}
+.question-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.question-btn img {
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+.question-btn button {
+    background-color: rgb(243, 243, 243);
+    border: none;
+    width: 100%;
+    max-width: 540px; /* Responsive */
+    text-align: left;
+    height: 45px;
+    border-radius: 30px;
+    padding-left: 15px;
+    cursor: pointer;
+    color: gray;
+}
+
+/* SEARCH ACTION BUTTONS */
+.search-action-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 15px 80px 10px 80px;
+}
+.search-action-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 30px;
+}
+.search-action-btn:hover {
+    cursor: pointer;
+    background-color: rgb(243, 243, 243);
+    border-radius: 20px;
+}
+.search-action-btn img {
+    width: 25px;
+}
+.search-action-btn button {
+    background: none;
+    border: none;
+    color: gray;
+}
+.vertical-separator {
+    width: 2px;
+    height: 25px;
+    background-color: rgb(226, 226, 226);
+}
+
+/* POSTS SECTION */
+.posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-container {
+    width: 100%;
+    max-width: 640px; /* Responsive */
+    background-color: #fff;
+    margin: 15px 0 0 0;
+}
+.post-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.post-profile-picture img {
+    width: 50px;
+    padding: 15px;
+    border-radius: 50%;
+}
+.post-info {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.post-info h4 {
+    margin: 0;
+}
+.post-info p {
+    margin: 0;
+    color: gray;
+}
+.post-title-container {
+    padding: 15px;
+    padding-top: 0;
+}
+.post-title-container h3 {
+    margin: 0;
+}
+.post-title-container p {
+    margin: 0;
+}
+.post-image-container img {
+    width: 100%;
+    max-width: 640px; /* Responsive */
+}
+.post-reaction-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 15px 10px 15px;
+}
+.like-dislike {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 15px;
+    justify-content: center;
+    padding: 2px 10px;
+    margin-right: 5px;
+}
+.post-reaction-container button {
+    background: none;
+    border: none;
+}
+.post-reaction-container button:hover {
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+}
+.post-reaction-container img {
+    width: 20px;
+}
+
+/* COMMENT CONTAINER */
+#comment-container {
+    background-color: #fff;
+    display: none;
+    padding-left: 15px;
+}
+.comment-h3 {
+    margin-left: 15px;
+}
+.add-comment-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 15px 15px;
+}
+.add-comment-container img {
+    width: 50px;
+    border-radius: 50%;
+}
+.add-comment-form {
+    margin-left: 15px;
+    display: flex;
+}
+.comment-input {
+    border: none;
+    width: 100%;
+    max-width: 410px; /* Responsive */
+    background-color: rgb(243, 243, 243);
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.add-comment-btn {
+    border: none;
+    background: none;
+    background-color: #0000ff;
+    border-radius: 20px;
+    color: #fff;
+    padding: 10px 10px;
+}
+
+/* VIEW COMMENTS CONTAINER */
+.view-comments-container {
+    display: flex;
+    flex-direction: column;
+}
+.post-comment {
+    display: flex;
+    flex-direction: row;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 30px;
+}
+.comment-by-profile-picture img {
+    width: 50px;
+    border-radius: 50%;
+}
+.comment-by-info {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+.comment-by-info h4 {
+    margin: 0;
+}
+.comment-by-info p {
+    margin: 0;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .new-post-form input,
+    .new-post-form textarea,
+    .post-title,
+    .post-container,
+    .post-image-container img {
+        width: 100%;
+    }
+
+    .ask-question-container {
+        width: 90%; /* Adjust width for mobile */
+    }
+
+    .comment-input {
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .new-post-form input,
+    .new-post-form textarea,
+    .post-title,
+    .post-container,
+    .post-image-container img {
+        width: 100%;
+    }
+
+    .search-action-btns,
+    .ask-question-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .post-info-container,
+    .post-reaction-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-comment {
+        padding: 15px; /* Adjust padding for mobile */
+    }
+}
